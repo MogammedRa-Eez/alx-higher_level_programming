@@ -1,4 +1,13 @@
- >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+This module contains only one function: matrix_mul.
+
+Using ``matrix_mul``
+--------------------
+
+First import
+~~~~~~~~~~~~
+First import ``matrix_mul`` from the ``100-matrix.mul`` module. Since the file name contains a numeral, you can't use the simple ``from 100-matrix.mul import matrix_mul``. You can instead use the following syntax:
+
+    >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
 
 Normal Use
 ~~~~~~~~~~
