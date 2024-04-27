@@ -1,13 +1,22 @@
 #!/usr/bin/python3
 """
-Script that fetches https://intranet.hbtn.io/status
-"""
-import requests
+Script that takes in a URL, sends a request to the URL and displays the
+body of the response (decoded in utf-8).
 
-if __name__ == '__main__':
-    url = "https://intranet.hbtn.io/status"
-    r = requests.get(url)
-    text = r.text
-    print("Body response:")
-    print("\t- type: {}".format(type(text)))
-    print("\t- content: {}".format(text))
+Usage: ./3-error_code.py <URL>
+  - Handles HTTP errors.
+"""
+from sys import argv
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError
+
+
+if __name__ == "__main__":
+    url = argv[0]
+    req = Request(url)
+
+    try:
+        with urlopen(req) as response:
+            print(response.read().decode("ascii"))
+    except HTTPError as e:
+        print("Error code: {}".format(e.code))
